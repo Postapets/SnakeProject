@@ -1,10 +1,7 @@
 package com.example.snakeproject;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
 import android.graphics.Canvas;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,10 +20,7 @@ import androidx.annotation.Nullable;
 import com.example.snakeproject.object.Apple;
 import com.example.snakeproject.object.Grass;
 import com.example.snakeproject.object.PartSnake;
-import com.example.snakeproject.object.Player;
 import com.example.snakeproject.object.Snake;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -37,11 +30,8 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Game extends View {
 
@@ -106,7 +96,7 @@ public class Game extends View {
         bmOpSprites = BitmapFactory.decodeResource(this.getResources(), host ? R.drawable.sprites2_tr : R.drawable.sprites_tr);
         bmOpSprites = Bitmap.createScaledBitmap(bmOpSprites, 5 * size, 4 * size, true);
 
-        bmApple = BitmapFactory.decodeResource(this.getResources(), R.drawable.manzana);
+        bmApple = BitmapFactory.decodeResource(this.getResources(), R.drawable.apple);
         bmApple = Bitmap.createScaledBitmap(bmApple, size, size, true);
 
         reset(0);
@@ -118,8 +108,8 @@ public class Game extends View {
 
     public void setIcons() {
         if (modGame == 0) {
-            MainActivity.imgview1.setImageResource(R.drawable.manzana);
-            MainActivity.imgview2.setImageResource(R.drawable.insignia);
+            MainActivity.imgview1.setImageResource(R.drawable.apple);
+            MainActivity.imgview2.setImageResource(R.drawable.star);
         }
         if (modGame == 1) {
             MainActivity.imgview1.setImageResource(host ? R.drawable.snake : R.drawable.snake2);

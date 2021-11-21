@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/manzana" />
+            app:srcCompat="@drawable/apple" />
 
         <TextView
             android:id="@+id/txtScore"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/insignia" />
+            app:srcCompat="@drawable/star" />
 
         <TextView
             android:id="@+id/txtBest"

@@ -50,7 +50,7 @@
                             android:orientation="vertical"
                             android:layout_centerInParent="true">
                             <ImageView
-                                android:src="@drawable/manzana"
+                                android:src="@drawable/apple"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:scaleType="fitXY"/>
@@ -74,7 +74,7 @@
                             android:orientation="vertical"
                             android:layout_centerInParent="true">
                             <ImageView
-                                android:src="@drawable/insignia"
+                                android:src="@drawable/star"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:scaleType="fitXY"/>
