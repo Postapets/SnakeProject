@@ -52,7 +52,7 @@ public class Game extends View {
 
     public static int size;
 
-    // Cantidad de celdas visibles y disponibles en el Game
+    // penis
     private int w = 12, h = 17;
 
     private Bitmap bmGrassLight, bmGrassDark, bmSprites, bmOpSprites, bmApple;
