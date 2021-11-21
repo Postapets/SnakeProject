@@ -45,7 +45,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     // TAG LOGCAT
-    public static final String TAG = "firestore";
+    public static final String TAG = "firestore"; //перевод огненный камень
 
     // STORAGE VARIABLES
     public static final String GAME_SETTINGS = "games";
@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
     public static ImageView imgview1, imgview2;
     public Game game;
 
-    // LIST ITEMS
+    // LIST ITEMS  ЭЛЕМЕНТЫ СПИСКА
     public ListView list;
     public List<Rlist> listRooms = new ArrayList();
 
-    // NECCESARY VARIABLES
+    // NECCESARY VARIABLES  НЕОБХОДИМЫЕ ПЕРЕМЕННЫЕ
     public Activity context = this;
     public String roomCode;
     public boolean host = false;
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         game = findViewById(R.id.game);
 
-        // Revisar dimensionamiento de la pantalla para setear medidas del tablero de juego
+        // Проверьте размер экрана, чтобы установить размеры игрового поля
         game.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
         initialDialog();
     }
 
-    // Desplegar ventana dialog
+    // Развернуть окно dialog
     public void initialDialog() {
         int bestScore = 0;
-        // Tomar en cuenta anterior partida
+        // Принять во внимание предыдущую игру
         SharedPreferences sp = this.getSharedPreferences(GAME_SETTINGS, Context.MODE_PRIVATE);
         if (sp != null) {
             bestScore = sp.getInt(BEST_SCORE, 0);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         dialogScore.setCanceledOnTouchOutside(false);
 
         Button rl_start = dialogScore.findViewById(R.id.rl_start);
-        // Cuando pulse el botón de start resetear el game.
+        // При нажатии на кнопку start сбросить game.
         rl_start.setOnClickListener(v -> {
             game.setHost(true);
             game.init();
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button rl_multiplayer = dialogScore.findViewById(R.id.rl_multiplayer);
 
-        // Cuando pulse el botón de start multiplayer mostrar ventana de lista de salas.
+        // При нажатии кнопки start multiplayer показать окно списка комнат.
         rl_multiplayer.setOnClickListener(v -> {
             dialogRooms();
         });
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         dialogScore.show();
     }
 
-    // Desplegar ventana rooms
+    //Развернуть окно rooms
     public void dialogRooms() {
         host = false;
 
@@ -154,12 +154,12 @@ public class MainActivity extends AppCompatActivity {
         adapter = new AdapterRoomList(context, listRooms);
         list.setAdapter(adapter);
 
-        // Snapshot listener collections rooms
+        // Комнаты коллекций прослушивателей моментальных снимков
         registration = FirebaseFirestore.getInstance().collection("rooms")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        // Si existe un error
+                        // Если есть ошибка
 
                         if (e != null) {
                             Log.e(TAG, "onEvent: ", e);
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
                         listRooms.clear();
 
-                        // Si existen colecciones
+                        //Существуют ли коллекции
                         if (queryDocumentSnapshots != null) {
                             List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
                             numRooms = snapshotList.size();
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if (task.isSuccessful()) {
-                                            // Añadir nuevo elemento al ListView
+                                            // Добавить новый элемент в ListView
                                             if (findItem(snapshot.getId()) == null) {
                                                 match = new Rlist();
                                                 match.setCod(snapshot.getId());
@@ -208,22 +208,22 @@ public class MainActivity extends AppCompatActivity {
 
         Button rl_new_room = dialogRooms.findViewById(R.id.rl_new_room);
 
-        // Escucha evento onclick de botón "Nueva Partida"
+        // Слушайте onclick событие кнопки "Новая игра"
         rl_new_room.setOnClickListener(v -> {
-            registration.remove();  // Eliminar snapshot listener
+            registration.remove();  // Прослушиватель моментальных снимков Eliminar
             String id = FirebaseFirestore.getInstance().collection("rooms").document().getId();
             Map<String, Object> fields = new HashMap<>();
-            fields.put("state", "En espera");
+            fields.put("state", "В ожидании");
             fields.put("numPlayers", 0);
 
-            // Insertar nuevo documento de sala
+            // Вставить новый документ комнаты
             FirebaseFirestore.getInstance().collection("rooms").document(id)
                     .set(fields)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             host = true;
-                            dialogGame(id); // Mostrar diálogo de juego
+                            dialogGame(id); //Показать диалог игры
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -240,16 +240,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void itemTouch() {
-        // Identificar item pulsado
+        // Определить пункт нажатия
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Si existen dos jugadores
+                // Если есть два игрока
                 if (listRooms.get(position).getPlayers() == 2) {
-                    // Mostrar alerta de capacidad
+                    // Показать предупреждение о емкости
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Capacidad de jugadores alcanzada").setTitle("Alert Dialog");
-                    builder.setNeutralButton("Entendido", new DialogInterface.OnClickListener() {
+                    builder.setMessage("Достигнутая способность игроков").setTitle("Диалоговое окно предупреждения");
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-                // Si existe un sólo jugador
+                //Если существует только один игрок
                 if (listRooms.get(position).getPlayers() == 1) {
                     host = false;
                     registration.remove();
@@ -269,12 +269,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Desplegar ventana de juego
+    // Развернуть окно игры
     public void dialogGame(String code) {
         dialogRooms.dismiss();
         dialogScore.dismiss();
-        roomCode = code; // Guardar código de la partida
-
+        roomCode = code; // Сохранить код игры
         dialogGame = new Dialog(this);
         dialogGame.setCanceledOnTouchOutside(false);
         dialogGame.setContentView(R.layout.dialog_room);
@@ -291,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         DocumentReference docRef = FirebaseFirestore.getInstance().collection("rooms").document(roomCode);
-                        docRef.update("state", host ? "En espera" : "Partida lista", "numPlayers", host ? 1 : 2);
+                        docRef.update("state", host ? "В ожидании" : "Игра готова", "numPlayers", host ? 1 : 2);
                         numPlayers = 1;
                         setSnapshotRoom(roomCode);
                     }
@@ -305,17 +304,17 @@ public class MainActivity extends AppCompatActivity {
 
         dialogGame.show();
 
-        // Comenzar partida multijugador
+        // Начать многопользовательскую игру
         Button start = dialogGame.findViewById(R.id.room_start);
 
         if (host) {
             start.setVisibility(View.VISIBLE);
             start.setOnClickListener(v -> {
                 if (numPlayers == 1) {
-                    // Mostrar alerta de capacidad
+                    // Показать предупреждение о емкости
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Falta un jugador para comenzar").setTitle("Alert Dialog");
-                    builder.setNeutralButton("Entendido", new DialogInterface.OnClickListener() {
+                    builder.setMessage("Не хватает одного игрока, чтобы начать").setTitle("Alert Dialog");
+                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -326,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.show();
                 }
                 if (numPlayers == 2) {
-                    System.out.println("Está jugando");
+                    System.out.println("Он играет.");
                     DocumentReference docRef = FirebaseFirestore.getInstance().collection("rooms").document(roomCode);
                     docRef.update("state", "Jugando");
                 }
@@ -336,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
             start.setVisibility(View.GONE);
         }
 
-        // Eliminar partida si se sale
+        //Удалить игру, если вы выходите
         Button exit = dialogGame.findViewById(R.id.room_exit);
         exit.setOnClickListener(v -> {
             alertDialogDelete();
@@ -355,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setSnapshotRoom(String code) {
-        // Snapshopt listener de cambios de la sala
+        // Snapshopt слушатель изменений комнаты
         DocumentReference docRef = FirebaseFirestore.getInstance().collection("rooms").document(code);
         room = docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -363,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Nullable FirebaseFirestoreException e) {
 
 
-                System.out.println("Actualización en snapshotRoom");
+                System.out.println("Обновление в моментальном снимке Room");
                 // Si existen errores
                 if (e != null) {
                     Log.w(TAG, "Listen failed.", e);
@@ -371,10 +370,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (snapshot.getData() == null) {
 
-                    // Mostrar alerta de capacidad
+                    // Показать предупреждение о емкости
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Partida finalizada").setTitle("Alert Dialog");
-                    builder.setNeutralButton("Entendido", new DialogInterface.OnClickListener() {
+                    builder.setMessage("Игра завершена").setTitle("Alert Dialog");
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -388,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.show();
                 }
 
-                // Si existe un cambio
+                // Если есть изменение
                 if (snapshot != null && snapshot.exists()) {
 
                     FirebaseFirestore.getInstance().collection("rooms").document(roomCode).collection("players")
@@ -410,11 +409,11 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }else{
-                        // Cambio nombre de la sala
+                        // Переименование зала заседаний
                         TextView txtCode = dialogGame.findViewById(R.id.txt_room_play_code);
                         txtCode.setText(snapshot.getId().substring(0, 4));
 
-                        // Cambio estado de la sala
+                        // Изменение состояния комнаты
 
                         TextView txtState = dialogGame.findViewById(R.id.txt_state);
                         txtState.setText((String) snapshot.getData().get("state"));
@@ -432,9 +431,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void alertDialogDelete() {
-        // Mostrar alerta de confirmación
+        // Показать оповещение о подтверждении
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(host ? "¿Deseas finalizar la sala?" : "¿Deseas salir de la sala?").setTitle("Alert Dialog");
+        builder.setMessage(host ? "Вы хотите закончить комнату?" : "Хочешь выйти из зала?").setTitle("Alert Dialog");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -465,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void exitRoom() {
         DocumentReference docRef = FirebaseFirestore.getInstance().collection("rooms").document(roomCode);
-        docRef.update("state", "En espera", "numPlayers", 1);
+        docRef.update("state", "В ожидании", "numPlayers", 1);
 
         FirebaseFirestore.getInstance().collection("rooms").document(roomCode)
                 .collection("players").document("2").delete()

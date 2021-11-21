@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Partidas"
+            android:text="Lobbies"
             android:textSize="35dp"
             android:textStyle="bold"
             android:paddingVertical="10dp"
@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:paddingHorizontal="30dp"
             android:layout_marginBottom="10dp"
-            android:text="Nueva Partida"/>
+            android:text="New Lobby"/>
         <ListView
             android:id="@+id/list_rooms"
             android:layout_width="344dp"

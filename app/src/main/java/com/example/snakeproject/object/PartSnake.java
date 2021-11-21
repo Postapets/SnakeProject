@@ -9,7 +9,7 @@ import com.example.snakeproject.Game;
 public class PartSnake extends Point {
     private Bitmap bm;
 
-    //Creación de rectángulos para lógica de intersección
+    //Создание прямоугольников для логики пересечения
     private Rect rBody, rTop, rBottom, rRight, rLeft;
     private int id;
 
@@ -52,7 +52,7 @@ public class PartSnake extends Point {
         this.y = y;
     }
 
-    //Crear Rectangulo superior
+    //Создать верхний прямоугольник
     public Rect getrTop() {
         return new Rect(this.x, this.y - 10 * Game.SCREEN_HEIGHT / 1920, this.x + Game.size, this.y);
     }
@@ -61,7 +61,7 @@ public class PartSnake extends Point {
         this.rTop = rTop;
     }
 
-    //Crear Rectangulo inferior
+    //Создать Нижний прямоугольник
     public Rect getrBottom() {
         return new Rect(this.x, this.y + Game.size, this.x + Game.size, this.y + Game.size + 10 * Game.SCREEN_HEIGHT / 1920);
     }
@@ -70,7 +70,7 @@ public class PartSnake extends Point {
         this.rBottom = rBottom;
     }
 
-    //Crear Rectangulo a la derecha
+    //Создать прямоугольник справа
     public Rect getrRight() {
         return new Rect(this.x + Game.size, this.y, this.x + Game.size + 10 * Game.SCREEN_WIDTH / 1080, this.y + Game.size);
     }
@@ -79,7 +79,7 @@ public class PartSnake extends Point {
         this.rRight = rRight;
     }
 
-    //Crear Rectangulo a la izquierda
+    //Создать прямоугольник слева
     public Rect getrLeft() {
         return new Rect(this.x - 10 * Game.SCREEN_WIDTH / 1080, this.y, this.x, this.y + Game.size);
     }
@@ -88,7 +88,7 @@ public class PartSnake extends Point {
         this.rLeft = rLeft;
     }
 
-    //Crear Rectangulo de la parte del cuerpo
+    //Создать прямоугольную часть тела
     public Rect getrBody() {
         return new Rect(this.x, this.y, this.x + Game.size, this.y + Game.size);
     }

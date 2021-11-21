@@ -52,7 +52,7 @@ public class Game extends View {
 
     public static int size;
 
-    // penis
+    // Количество ячеек, видимых и доступных в игре
     private int w = 12, h = 17;
 
     private Bitmap bmGrassLight, bmGrassDark, bmSprites, bmOpSprites, bmApple;
@@ -91,15 +91,15 @@ public class Game extends View {
     public void init() {
         Game.size = 90 * SCREEN_WIDTH / 1080;
 
-        // Estilo de Celda con fondo Claro
+        //Стиль ячейки со светлым фоном
         bmGrassLight = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         bmGrassLight.eraseColor(Color.parseColor("#B5835E"));
 
-        // Estilo de Celda con fondo Oscuro
+        // Стиль ячейки с темным фоном
         bmGrassDark = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         bmGrassDark.eraseColor(Color.parseColor("#A87854"));
 
-        // Sprites dispuestos para el juego.
+        //Спрайты расположены для игры.
         bmSprites = BitmapFactory.decodeResource(this.getResources(), host ? R.drawable.sprites1 : R.drawable.sprites2);
         bmSprites = Bitmap.createScaledBitmap(bmSprites, 5 * size, 4 * size, true);
 
@@ -111,7 +111,7 @@ public class Game extends View {
 
         reset(0);
 
-        //Inicialización del hilo
+        //Инициализация потока
         handler = new Handler();
         runnable = () -> invalidate();
     }
@@ -133,7 +133,7 @@ public class Game extends View {
         snake = null;
         System.gc();
 
-        // Adaptación de los estilos en la matriz
+        //Адаптация стилей в матрице
         boolean color = true;
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
@@ -146,7 +146,7 @@ public class Game extends View {
         snake = new Snake(bmSprites, grass[9][6].getX(), grass[9][6].getY(), 4);
 
         if (modGame == 0) {
-            //Creación del Snake con posición inicial en el centro del juego
+            //Создание змеи с исходной позицией в центре игры
 
             score = 0;
             MainActivity.txtScore1.setText(score + "");
@@ -156,7 +156,7 @@ public class Game extends View {
             MainActivity.txtScore1.setText("0");
             MainActivity.txtScore2.setText("0");
 
-            //Creación del Snake con posición inicial en el centro del juego
+            //Создание змеи с исходной позицией в центре игры
             for (DocumentSnapshot player : infoGame) {
                 if (host) {
                     if (player.getId().equals("1")) {
@@ -175,7 +175,7 @@ public class Game extends View {
             initialMove = 0;
         }
 
-        //Creación del Apple con posición inicial random
+        //Создание Apple с начальной позицией random
         Point random = randomApple();
         apple = new Apple(bmApple, grass[random.y][random.x].getX(), grass[random.y][random.x].getY());
 
@@ -183,14 +183,14 @@ public class Game extends View {
     }
 
     private void setSnapshotOpponent(String code) {
-        // Snapshopt listener de cambios de la sala
+        // Snapshopt слушатель изменений комнаты
 
         DocumentReference docRef = FirebaseFirestore.getInstance().collection("rooms").document(roomCode).collection("players").document(code);
         opponent = docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                 @Nullable FirebaseFirestoreException e) {
-                // Si existen errores
+                // Если есть ошибки
 
                 if (e != null) {
                     Log.w(MainActivity.TAG, "Listen failed.", e);
@@ -201,7 +201,7 @@ public class Game extends View {
                     gameOver();
                 }
 
-                // Si existe un cambio
+                // Если есть изменение
                 if (snapshot != null && snapshot.exists() && snapshot.getData().get("body") != null) {
 
                     int x = ((Long) snapshot.getData().get("x")).intValue();
@@ -233,7 +233,7 @@ public class Game extends View {
 
         canvas.drawColor(context.getResources().getColor(R.color.green_bg));
 
-        // Dibujado del Background
+        // Нарисованный Background
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 Grass current = grass[i][j];
@@ -248,7 +248,7 @@ public class Game extends View {
             snake.updateMovement();
             head = snake.getBody().get(0);
 
-            // Validar si la cabeza sale del tablero de juego
+            // Проверить, покидает ли голова игровое поле
             if (head.getX() < grass[0][0].getX()
                     || head.getY() < grass[0][0].getY()
                     || head.getY() + size > grass[h - 1][w - 1].getY() + size
@@ -259,7 +259,7 @@ public class Game extends View {
                 gameOver();
             }
 
-            //Validar si la cabeza toca alguna parte del cuerpo
+            //Проверить, касается ли голова какой-либо части тела
             for (int i = 1; i < snake.getBody().size(); i++) {
                 if (head.getrBody().intersect(snake.getBody().get(i).getrBody())) {
                     if (modGame == 1) {
@@ -274,11 +274,11 @@ public class Game extends View {
         if (opponentSnake != null) {
             opponentSnake.drawSnake(canvas);
         }
-        // Dibujado del Snake y del Apple
+        //Нарисованный Снаке и Яблока
         snake.drawSnake(canvas);
         apple.draw(canvas);
 
-        // Validar que la serpiente se alimenta
+        // Проверить, что змея питается
         if (head.getrBody().intersect(apple.getR())) {
 
             if (modGame == 1 && isPlaying) {
@@ -294,11 +294,11 @@ public class Game extends View {
             }
 
 
-            // Setear una nueva posición a una nueva manzana
+            // Установить новую позицию на новое яблоко
             Point random = randomApple();
             apple.reset(grass[random.y][random.x].getX(), grass[random.y][random.x].getY());
 
-            //Añadir una nueva parte
+            //Добавить новую часть
             snake.addPart();
             score++;
 
@@ -324,11 +324,11 @@ public class Game extends View {
         }
 
 
-        //Delay del movimiento de la Snake
+        //Задержка движения змеи
         handler.postDelayed(runnable, DELAY);
     }
 
-    // Guardar la información de la mejor puntuación de partida obtenida
+    // Сохранить информацию о лучшем стартовом балле, полученном
     private void loadBest(@NonNull Context context) {
         SharedPreferences sp = context.getSharedPreferences(MainActivity.GAME_SETTINGS, Context.MODE_PRIVATE);
         if (sp != null) {
@@ -336,7 +336,7 @@ public class Game extends View {
         }
     }
 
-    // Storage interno de la información de puntuación de partida
+    // Внутреннее хранилище информации о начальном счете
     private void saveBest() {
         SharedPreferences sp = context.getSharedPreferences(MainActivity.GAME_SETTINGS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -344,7 +344,7 @@ public class Game extends View {
         editor.apply();
     }
 
-    // Finalizar juego y mostrar Dialog
+    // Завершить игру и показать диалог
     private void gameOver() {
         isPlaying = false;
         if (modGame == 0) {
@@ -354,7 +354,7 @@ public class Game extends View {
         } else {
             opponent.remove();
             FirebaseFirestore.getInstance().collection("rooms").document(roomCode)
-                    .update("state", "Partida lista");
+                    .update("state", "Игра готова");
             MainActivity.hostScore.setText(host ? MainActivity.txtScore1.getText() : MainActivity.txtScore2.getText());
             MainActivity.invitedScore.setText(host ? MainActivity.txtScore2.getText() : MainActivity.txtScore1.getText());
             MainActivity.INSTANCE.setSnapshotRoom(roomCode);
@@ -367,7 +367,7 @@ public class Game extends View {
                 .document(host ? "1" : "2").update("d", "F");
     }
 
-    // Generar posición aleatoria de la manzana
+    // Создать случайную позицию Яблока
     private Point randomApple() {
         try {
             Point point = new Point();
@@ -376,7 +376,7 @@ public class Game extends View {
             point.x = r.nextInt(w - 1);
 
             Grass current = grass[point.y][point.x];
-            // Algoritmo para verificar que la nueva posición de la manzana no tenga una parte del cuerpo de la serpiente
+            // Алгоритм проверки того, что новое положение яблока не имеет части тела змеи
             Rect rect = new Rect(current.getX(), current.getY(), current.getX() + size, current.getY() + size);
             boolean check = true;
 
@@ -384,11 +384,11 @@ public class Game extends View {
                 check = false;
                 for (int i = 0; i < snake.getBody().size(); i++) {
                     if (rect.intersect(snake.getBody().get(i).getrBody())) {
-                        System.out.println("intersectó");
+                        System.out.println("пересек");
                         check = true;
                         point.y = r.nextInt(h - 1);
                         point.x = r.nextInt(w - 1);
-                        System.out.println("ciclo:" + point);
+                        System.out.println("цикл:" + point);
                         current = grass[point.y][point.x];
                         rect = new Rect(current.getX(), current.getY(), current.getX() + size, current.getY() + size);
                     } else {
@@ -407,32 +407,32 @@ public class Game extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int a = event.getActionMasked();
         switch (a) {
-            // Cuando realiza un touch
+            // Когда вы выполняете touch
             case MotionEvent.ACTION_MOVE: {
                 if (move == false) {
                     mx = event.getX();
                     my = event.getY();
                     move = true;
                 } else {
-                    // Si el movimiento es hacia la izquierda
+                    // Если движение влево
                     if (mx - event.getX() > 100 && !snake.isMoveRight()) {
                         mx = event.getX();
                         my = event.getY();
                         this.snake.setMoveLeft(true);
                         isPlaying = true;
-                        // Si el movimiento es hacia la derecha
+                        // Если движение по часовой стрелке
                     } else if (event.getX() - mx > 100 && !snake.isMoveLeft()) {
                         mx = event.getX();
                         my = event.getY();
                         this.snake.setMoveRight(true);
                         isPlaying = true;
-                        // Si el movimiento es hacia abajo
+                        // Если движение вниз
                     } else if (event.getY() - my > 100 && !snake.isMoveUp()) {
                         mx = event.getX();
                         my = event.getY();
                         this.snake.setMoveDown(true);
                         isPlaying = true;
-                        // Si el movimiento es hacia arriba
+                        //Если Движение вверх
                     } else if (my - event.getY() > 100 && !snake.isMoveDown()) {
                         mx = event.getX();
                         my = event.getY();
@@ -442,7 +442,7 @@ public class Game extends View {
                 }
                 break;
             }
-            // Cuando suelta el touch
+            // Когда вы отпускаете touch
             case MotionEvent.ACTION_UP: {
                 mx = 0;
                 my = 0;

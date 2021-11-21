@@ -36,7 +36,7 @@
             android:id="@+id/txtScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x 0"
+            android:text="0"
             android:textSize="42sp" />
 
         <Space
@@ -54,7 +54,7 @@
             android:id="@+id/txtBest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x 0"
+            android:text="0"
             android:textSize="42sp" />
 
     </LinearLayout>

@@ -104,7 +104,7 @@
             android:backgroundTint="@color/teal_700"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:text="Jugar"/>
+            android:text="Play"/>
         <Button
             android:id="@+id/rl_multiplayer"
             android:layout_width="match_parent"

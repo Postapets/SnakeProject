@@ -14,22 +14,22 @@ import java.util.Map;
 
 public class Snake {
 
-    // Principal Bitmap
+    // Основной Bitmap
     private Bitmap bm;
 
-    // Bitmaps de Cabeza, Cuerpo y Cola
+    // Bitmaps головы, тела и хвоста
     private Bitmap bmHeadDown, bmHeadLeft, bmHeadRight, bmHeadUp;
     private Bitmap bmBodyVertical, bmBodyHorizontal;
     private Bitmap bmBodyBottomLeft, bmBodyBottomRight, bmBodyTopLeft, bmBodyTopRight;
     private Bitmap bmTailDown, bmTailRight, bmTailLeft, bmTailUp;
 
-    // Cuerpo de la Snake como lista de PartSnake
+    // Тело змеи как список PartSnake
     private ArrayList<PartSnake> body = new ArrayList<>();
 
-    // Cantidad de elementos del cuerpo
+    // Количество элементов тела
     private int length;
 
-    // Booleans para el control del movimiento
+    // bool для управления движением
     private boolean moveUp, moveLeft, moveRight, moveDown;
 
     private int id, score;
@@ -40,10 +40,10 @@ public class Snake {
 
         this.setBitmaps(bm);
 
-        // Al inicializar se setea que la snake comience hacia la derecha
+        // При инициализации устанавливается, что snake начинается вправо
         moveRight = true;
 
-        // Partes del cuerpo en dirección de la derecha
+        //Части тела в правом направлении
         body.add(new PartSnake(bmHeadRight, x, y, 1));
         for (int i = 1; i < length - 1; i++) {
             this.body.add(new PartSnake(bmBodyHorizontal, this.body.get(i - 1).getX() - Game.size, y, 13));
@@ -109,25 +109,25 @@ public class Snake {
     public void setBitmaps(Bitmap bm) {
         int w = bm.getWidth() / 5;
         int h = bm.getHeight() / 4;
-        // Elementos de la primera fila de los sprites
+        // Элементы первой строки спрайтов
         bmBodyBottomRight = Bitmap.createBitmap(bm, 0, 0, w, h);
         bmBodyHorizontal = Bitmap.createBitmap(bm, w, 0, w, h);
         bmBodyBottomLeft = Bitmap.createBitmap(bm, 2 * w, 0, w, h);
         bmHeadUp = Bitmap.createBitmap(bm, 3 * w, 0, w, h);
         bmHeadRight = Bitmap.createBitmap(bm, 4 * w, 0, w, h);
 
-        // Elementos de la segunda fila de los sprites
+        // Элементы второй строки спрайтов
         bmBodyTopRight = Bitmap.createBitmap(bm, 0, h, w, h);
         bmBodyVertical = Bitmap.createBitmap(bm, 2 * w, h, w, h);
         bmHeadLeft = Bitmap.createBitmap(bm, 3 * w, h, w, h);
         bmHeadDown = Bitmap.createBitmap(bm, 4 * w, h, w, h);
 
-        // Elementos de la tercera fila de los sprites
+        // Элементы третьей строки спрайтов
         bmBodyTopLeft = Bitmap.createBitmap(bm, 2 * w, 2 * h, w, h);
         bmTailUp = Bitmap.createBitmap(bm, 3 * w, 2 * h, w, h);
         bmTailRight = Bitmap.createBitmap(bm, 4 * w, 2 * h, w, h);
 
-        // Elementos de la cuarta fila de los sprites
+        // Элементы четвертой строки спрайтов
         bmTailLeft = Bitmap.createBitmap(bm, 3 * w, 3 * h, w, h);
         bmTailDown = Bitmap.createBitmap(bm, 4 * w, 3 * h, w, h);
     }
@@ -136,19 +136,19 @@ public class Snake {
         PartSnake tail = this.body.get(length - 1);
         this.length += 1;
 
-        // Si la dirección era derecha
+        // Если направление было правильным
         if (tail.getBm() == bmTailRight) {
             this.body.add(new PartSnake(bmTailRight, tail.getX() - Game.size, tail.getY(), 5));
 
-            // Si la dirección era abajo
+            // Если направление было ниже
         } else if (tail.getBm() == bmTailDown) {
             this.body.add(new PartSnake(bmTailDown, tail.getX(), tail.getY() - Game.size, 6));
 
-            // Si la dirección era izquierda
+            // Если направление было левым
         } else if (tail.getBm() == bmTailLeft) {
             this.body.add(new PartSnake(bmTailLeft, tail.getX() + Game.size, tail.getY(), 7));
 
-            // Si la dirección era arriba
+            // Если бы адрес был выше,
         } else if (tail.getBm() == bmTailUp) {
             this.body.add(new PartSnake(bmTailUp, tail.getX(), tail.getY() + Game.size, 8));
         }
@@ -157,13 +157,13 @@ public class Snake {
 
     public void updateMovement() {
 
-        // Desplazamiento del cuerpo
+        // Смещение тела
         for (int i = length - 1; i > 0; i--) {
             body.get(i).setX(body.get(i - 1).getX());
             body.get(i).setY(body.get(i - 1).getY());
         }
 
-        // Movimientos de la Cabeza
+        // Движения головы
         if (moveRight) {
             body.get(0).setX(body.get(0).getX() + Game.size);
             body.get(0).setBm(bmHeadRight);
@@ -182,69 +182,68 @@ public class Snake {
             body.get(0).setId(4);
         }
 
-        // Movimientos del Cuerpo
         for (int i = 1; i < length - 1; i++) {
 
-            // Validación intersección izquierda
+            // Проверка левого пересечения
             boolean inter_left_next = body.get(i).getrLeft().intersect(body.get(i + 1).getrBody());
             boolean inter_left_prev = body.get(i).getrLeft().intersect(body.get(i - 1).getrBody());
 
-            // Validación intersección derecha
+            // Проверка правого пересечения
             boolean inter_right_next = body.get(i).getrRight().intersect(body.get(i + 1).getrBody());
             boolean inter_right_prev = body.get(i).getrRight().intersect(body.get(i - 1).getrBody());
 
-            // Validación intersección arriba
+            // Проверка пересечения выше
             boolean inter_top_next = body.get(i).getrTop().intersect(body.get(i + 1).getrBody());
             boolean inter_top_prev = body.get(i).getrTop().intersect(body.get(i - 1).getrBody());
 
-            // Validación intersección abajo
+            // Проверка пересечения ниже
             boolean inter_bottom_next = body.get(i).getrBottom().intersect(body.get(i + 1).getrBody());
             boolean inter_bottom_prev = body.get(i).getrBottom().intersect(body.get(i - 1).getrBody());
 
-            // Dibujar sprites de cambio de dirección
+            // Нарисуйте спрайты изменения направления
 
-            // Si la parte del cuerpo intersecta otra parte siguiente a la derecha y una parte previa abajo
-            // o si la parte del cuerpo intersecta otra parte siguiente abajo y una parte previa a la derecha
+            // Если часть тела пересекает другую следующую часть справа и предыдущую часть ниже
+            //или если часть тела пересекает другую следующую часть внизу и предыдущую часть справа
             if (inter_right_next && inter_bottom_prev || inter_bottom_next && inter_right_prev) {
                 body.get(i).setBm(bmBodyBottomRight);
                 body.get(i).setId(9);
 
-                // Si la parte del cuerpo intersecta otra parte siguiente a la izquierda y una parte previa abajo
-                // o si la parte del cuerpo intersecta otra parte siguiente abajo y una parte previa a la izquierda
+                // Если часть тела пересекает другую следующую часть слева и предыдущую часть ниже
+                // или если часть тела пересекает другую следующую часть внизу и предыдущую часть слева
             } else if (inter_left_next && inter_bottom_prev || inter_bottom_next && inter_left_prev) {
                 body.get(i).setBm(bmBodyBottomLeft);
                 body.get(i).setId(10);
 
-                // Si la parte del cuerpo intersecta otra parte siguiente a la izquierda y una parte previa arriba
-                // o si la parte del cuerpo intersecta otra parte siguiente arriba y una parte previa a la izquierda
+                //Если часть тела пересекает другую следующую часть слева и предыдущую часть выше
+                // или, если часть тела пересекает другую следующую часть выше и предыдущую часть слева
             } else if (inter_left_next && inter_top_prev || inter_top_next && inter_left_prev) {
                 body.get(i).setBm(bmBodyTopLeft);
                 body.get(i).setId(11);
 
-                // Si la parte del cuerpo intersecta otra parte siguiente a la derecha y una parte previa arriba
-                // o si la parte del cuerpo intersecta otra parte siguiente arriba y una parte previa a la derecha
+                //Если часть тела пересекает другую следующую часть справа и предыдущую часть выше
+                //или, если часть тела пересекает другую следующую часть выше и предыдущую часть справа
             } else if (inter_right_next && inter_top_prev || inter_top_next && inter_right_prev) {
                 body.get(i).setBm(bmBodyTopRight);
                 body.get(i).setId(12);
 
-                // Si la parte del cuerpo intersecta otra parte siguiente a la derecha y una parte previa a la izquierda
-                // o si la parte del cuerpo intersecta otra parte siguiente a la izquierda y una parte previa a la derecha
+                // Если часть тела пересекает другую следующую часть справа и одну предыдущую часть слева
+                //или если часть тела пересекает другую следующую часть слева и предыдущую часть справа
             } else if (inter_right_next && inter_left_prev || inter_left_next && inter_right_prev) {
                 body.get(i).setBm(bmBodyHorizontal);
                 body.get(i).setId(13);
 
-                // Si la parte del cuerpo intersecta otra parte siguiente arriba y una parte previa a la abajo
-                // o si la parte del cuerpo intersecta otra parte siguiente abajo y una parte previa a la arriba
+                // Если часть тела пересекает другую следующую часть вверх и одну предшествующую часть вниз
+                // или если часть тела пересекает другую следующую часть внизу и одну предшествующую часть выше
             } else if (inter_top_next && inter_bottom_prev || inter_bottom_next && inter_top_prev) {
                 body.get(i).setBm(bmBodyVertical);
                 body.get(i).setId(14);
             } else {
-                // Si el movimiento es horizontal
+                // Если движение горизонтальное
                 if (moveRight || moveLeft) {
                     body.get(i).setBm(bmBodyHorizontal);
                     body.get(i).setId(13);
 
-                    // Si el movimiento es vertical
+                    //Если движение вертикальное
                 } else if (moveUp || moveDown) {
                     body.get(i).setBm(bmBodyVertical);
                     body.get(i).setId(14);
@@ -254,37 +253,37 @@ public class Snake {
 
         Rect beforeTail = body.get(length - 2).getrBody();
 
-        // Movimientos de la Cola
-        // Si la cola intersecta con la anterior parte a la derecha
+        // Движения хвоста
+        // Если очередь пересекает предыдущую часть справа
         if (body.get(length - 1).getrRight().intersect(beforeTail)) {
             body.get(length - 1).setBm(bmTailRight);
             body.get(length - 1).setId(5);
 
-            // Si la cola intersecta con la anterior parte abajo
+            // Если очередь пересекает предыдущую часть ниже
         } else if (body.get(length - 1).getrBottom().intersect(beforeTail)) {
             body.get(length - 1).setBm(bmTailDown);
             body.get(length - 1).setId(6);
 
-            // Si la cola intersecta con la anterior parte a la izquierda
+            // Если очередь пересекает предыдущую часть слева
         } else if (body.get(length - 1).getrLeft().intersect(beforeTail)) {
             body.get(length - 1).setBm(bmTailLeft);
             body.get(length - 1).setId(7);
 
-            // Si la cola intersecta con la anterior parte arriba
+            //Если очередь пересекает предыдущую часть выше
         } else if (body.get(length - 1).getrTop().intersect(beforeTail)) {
             body.get(length - 1).setBm(bmTailUp);
             body.get(length - 1).setId(8);
         }
     }
 
-    //Dibujar la serpiente en el Canvas
+    //Нарисуйте змею на холсте
     public void drawSnake(Canvas canvas) {
         for (int i = length - 1; i >= 0; i--) {
             canvas.drawBitmap(body.get(i).getBm(), body.get(i).getX(), body.get(i).getY(), null);
         }
     }
 
-    //Set Movimientos en false
+    //Установить движения в false
     public void movements() {
         this.moveRight = false;
         this.moveDown = false;
