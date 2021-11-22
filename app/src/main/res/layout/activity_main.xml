@@ -23,40 +23,51 @@
         android:background="@color/green_bg"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="7dp">
 
-        <ImageView
-            android:id="@+id/icon1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/menu_back"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/apple" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/dark_rect"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="4dp">
 
-        <TextView
-            android:id="@+id/txtScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="42sp" />
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/apple" />
 
-        <Space
-            android:layout_width="42dp"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txtScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="42sp" />
 
-        <ImageView
-            android:id="@+id/icon2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/star" />
+            <Space
+                android:layout_width="42dp"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/txtBest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="42sp" />
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/star" />
 
+            <TextView
+                android:id="@+id/txtBest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="42sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

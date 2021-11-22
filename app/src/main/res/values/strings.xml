@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SnakeProject</string>
+    <string name="play">Play</string>
+    <string name="welcome">Snakes</string>
+    <string name="lobby">Lobby</string>
+    <string name="exit">Exit</string>
 </resources>

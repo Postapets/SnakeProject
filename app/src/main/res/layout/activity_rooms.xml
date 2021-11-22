@@ -3,36 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:padding="12dp"
+        android:background="@drawable/blue_green_rect">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lobbies"
-            android:textSize="35dp"
-            android:textStyle="bold"
             android:paddingVertical="10dp"
-            android:textAlignment="center"/>
+            android:text="Lobbies"
+            android:textAlignment="center"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
         <Button
             android:id="@+id/rl_new_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:backgroundTint="@color/teal_700"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
             android:layout_gravity="center"
-            android:paddingHorizontal="30dp"
             android:layout_marginBottom="10dp"
-            android:text="New Lobby"/>
+            android:background="@drawable/dark_green_rect"
+            android:paddingHorizontal="30dp"
+            android:text="New Lobby"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:backgroundTint="@null" />
+
         <ListView
             android:id="@+id/list_rooms"
             android:layout_width="344dp"
             android:layout_height="495dp"
-            android:paddingRight="15dp"/>
+            android:background="@drawable/dark_rect"
+            android:padding="8dp"
+            android:paddingRight="15dp" />
 
     </LinearLayout>
 </RelativeLayout>

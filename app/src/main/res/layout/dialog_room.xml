@@ -6,14 +6,20 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/dark_rect"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_bg_left"
+            android:layout_margin="6dp"
+            android:background="@drawable/blue_green_rect"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,14 +66,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/dark"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@drawable/gradient_background"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
+                    android:layout_margin="6dp"
+                    android:background="@drawable/blue_rect"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
                     <RelativeLayout
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -119,29 +127,40 @@
 
                 </LinearLayout>
                 <ImageView
-                    android:src="@drawable/splash_bg"
-                    android:scaleType="centerCrop"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"/>
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash_bg"
+                    android:layout_margin="6dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <Button
             android:id="@+id/room_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:backgroundTint="@color/teal_700"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/dark_green_rect"
+            android:text="@string/play"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:text="Play"/>
+            android:textSize="20sp"
+            app:backgroundTint="@null" />
         <Button
             android:id="@+id/room_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:backgroundTint="@color/teal_200"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/dark_green_rect"
+            android:text="@string/exit"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:text="Cancel"/>
+            android:textSize="20sp"
+            app:backgroundTint="@null" />
     </LinearLayout>
 </RelativeLayout>
