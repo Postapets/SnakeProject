@@ -89,7 +89,7 @@ public class Game extends View {
         bmGrassDark = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         bmGrassDark.eraseColor(Color.parseColor("#A87854"));
 
-        //Спрайты расположены для игры.
+        //Спрайты для игры
         bmSprites = BitmapFactory.decodeResource(this.getResources(), host ? R.drawable.sprites1 : R.drawable.sprites2);
         bmSprites = Bitmap.createScaledBitmap(bmSprites, 5 * size, 4 * size, true);
 
@@ -264,7 +264,7 @@ public class Game extends View {
         if (opponentSnake != null) {
             opponentSnake.drawSnake(canvas);
         }
-        //Нарисованный Снаке и Яблока
+        //Перерисовка змеи и яблока
         snake.drawSnake(canvas);
         apple.draw(canvas);
 
@@ -318,7 +318,7 @@ public class Game extends View {
         handler.postDelayed(runnable, DELAY);
     }
 
-    // Сохранить информацию о лучшем стартовом балле, полученном
+    // Сохранить информацию о лучшем стартовом балле
     private void loadBest(@NonNull Context context) {
         SharedPreferences sp = context.getSharedPreferences(MainActivity.GAME_SETTINGS, Context.MODE_PRIVATE);
         if (sp != null) {
@@ -366,7 +366,7 @@ public class Game extends View {
             point.x = r.nextInt(w - 1);
 
             Grass current = grass[point.y][point.x];
-            // Алгоритм проверки того, что новое положение яблока не имеет части тела змеи
+            // Алгоритм проверки того, что новое положение яблока не попадает на змею
             Rect rect = new Rect(current.getX(), current.getY(), current.getX() + size, current.getY() + size);
             boolean check = true;
 
@@ -410,7 +410,7 @@ public class Game extends View {
                         my = event.getY();
                         this.snake.setMoveLeft(true);
                         isPlaying = true;
-                        // Если движение по часовой стрелке
+                        // Если движение вправо
                     } else if (event.getX() - mx > 100 && !snake.isMoveLeft()) {
                         mx = event.getX();
                         my = event.getY();
@@ -432,7 +432,7 @@ public class Game extends View {
                 }
                 break;
             }
-            // Когда вы отпускаете touch
+            // Обнуление касания
             case MotionEvent.ACTION_UP: {
                 mx = 0;
                 my = 0;
