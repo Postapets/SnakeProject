@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="196dp"-->
+<!--        app:srcCompat="@drawable/logo" />-->
+
+    <LinearLayout
+        android:id="@+id/subLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/grey_rect"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Name"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Age"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Password"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/yellow_rect"
+            android:fontFamily="@font/segoe"
+            android:text="Зарегистрироваться"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/cto_blue"
+            app:backgroundTint="@null" />
+
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/yellow_rect"
+            android:fontFamily="@font/segoe"
+            android:text="Назад"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/cto_blue"
+            app:backgroundTint="@null" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+
+</LinearLayout>

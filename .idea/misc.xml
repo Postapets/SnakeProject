@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-v24/grey_white_rect.xml" value="0.2795" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-xxxhdpi/blue_button_selector.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-xxxhdpi/blue_green_rect.xml" value="0.3769230769230769" />
@@ -10,8 +11,15 @@
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-xxxhdpi/dark_green_rect.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable-xxxhdpi/dark_rect.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/blue_rect.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/dark_green_button_selector.xml" value="0.2795" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/gradient_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/green_background.xml" value="0.119" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/grey_rect.xml" value="0.2795" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/drawable/yellow_rect.xml" value="0.2975" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_login.xml" value="0.275" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_profile.xml" value="0.11481481481481481" />
+        <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_rooms.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/activity_welcome.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pavel/AndroidStudioProjects/SnakeProject-main/app/src/main/res/layout/dialog_room.xml" value="0.2957427536231884" />

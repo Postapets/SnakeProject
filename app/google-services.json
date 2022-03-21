@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "1099347840343",
-    "project_id": "snake-19050",
-    "storage_bucket": "snake-19050.appspot.com"
+    "project_number": "464742569152",
+    "firebase_url": "https://crm1-943d0-default-rtdb.firebaseio.com",
+    "project_id": "crm1-943d0",
+    "storage_bucket": "crm1-943d0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1099347840343:android:d1d27de8ccd6bb7a44c212",
+        "mobilesdk_app_id": "1:464742569152:android:3e9e680d800442a7f30925",
         "android_client_info": {
-          "package_name": "com.example.android"
+          "package_name": "com.example.snakeproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1099347840343-bakl0taoeod3d6j2s4plgkb1vrqs1pp5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.android",
-            "certificate_hash": "d710994d93ca1ec9fe281e24f9efdf5d8b08631f"
-          }
-        },
-        {
-          "client_id": "1099347840343-390k8gkvs0jof5sk1lhmp72vrspq97ca.apps.googleusercontent.com",
+          "client_id": "464742569152-vodqbb95jb75f3qed22k7uvkpfh91m56.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDRP1IrenhOd4ioCuHlT8HFjhgWS7zUMis"
+          "current_key": "AIzaSyAxO4BxQBLthGFtc7Zqyk5TQnM8FAvOnwE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1099347840343-390k8gkvs0jof5sk1lhmp72vrspq97ca.apps.googleusercontent.com",
+              "client_id": "464742569152-vodqbb95jb75f3qed22k7uvkpfh91m56.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -44,27 +37,27 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1099347840343:android:3d9095d584070ff744c212",
+        "mobilesdk_app_id": "1:464742569152:android:31685040e67ffa2ef30925",
         "android_client_info": {
-          "package_name": "com.example.snakeproject"
+          "package_name": "ru.sfedu.crm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1099347840343-390k8gkvs0jof5sk1lhmp72vrspq97ca.apps.googleusercontent.com",
+          "client_id": "464742569152-vodqbb95jb75f3qed22k7uvkpfh91m56.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDRP1IrenhOd4ioCuHlT8HFjhgWS7zUMis"
+          "current_key": "AIzaSyAxO4BxQBLthGFtc7Zqyk5TQnM8FAvOnwE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1099347840343-390k8gkvs0jof5sk1lhmp72vrspq97ca.apps.googleusercontent.com",
+              "client_id": "464742569152-vodqbb95jb75f3qed22k7uvkpfh91m56.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -24,7 +24,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.snakeproject.object.Player;
+import com.example.snakeproject.model.Player;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,8 +45,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     // TAG LOGCAT
-    public static final String TAG = "firestore"; //перевод огненный камень
-
+    public static final String TAG = "firestore";
     // STORAGE VARIABLES
     public static final String GAME_SETTINGS = "games";
     public static final String BEST_SCORE = "best";
@@ -240,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void itemTouch() {
-        // Определить пункт нажатия
+        // Определить нажатие
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -248,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 if (listRooms.get(position).getPlayers() == 2) {
                     // Показать предупреждение о емкости
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Достигнутая способность игроков").setTitle("Диалоговое окно предупреждения");
+                    builder.setMessage("Достаточно игроков").setTitle("Диалоговое окно предупреждения");
                     builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -363,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 System.out.println("Обновление в моментальном снимке Room");
-                // Si existen errores
+
                 if (e != null) {
                     Log.w(TAG, "Listen failed.", e);
                     return;

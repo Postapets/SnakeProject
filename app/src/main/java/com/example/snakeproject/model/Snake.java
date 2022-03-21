@@ -1,4 +1,4 @@
-package com.example.snakeproject.object;
+package com.example.snakeproject.model;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -6,7 +6,6 @@ import android.graphics.Rect;
 
 import com.example.snakeproject.Game;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

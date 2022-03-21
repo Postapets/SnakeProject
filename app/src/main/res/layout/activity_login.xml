@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="196dp"-->
+<!--        app:srcCompat="@drawable/logo" />-->
+
+    <LinearLayout
+        android:id="@+id/subLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/grey_rect"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/firstTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe"
+            android:layout_marginTop="15dp"
+            android:text="Пожалуйста, выполните вход"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/cto_blue"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:background="@drawable/white_rect"
+            android:ems="10"
+            android:hint="  Password"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/yellow_rect"
+            android:fontFamily="@font/segoe"
+            android:text="Войти"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/cto_blue"
+            app:backgroundTint="@null" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/yellow_rect"
+                android:fontFamily="@font/segoe"
+                android:text="Забыли пароль?"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/cto_blue"
+                android:textSize="12sp"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/yellow_rect"
+                android:fontFamily="@font/segoe"
+                android:text="Зарегистрироваться"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/cto_blue"
+                android:textSize="12sp"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="vertical"
+            android:padding="10dp"/>
+    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </LinearLayout>

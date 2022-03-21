@@ -17,10 +17,10 @@ import android.graphics.Canvas;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.snakeproject.object.Apple;
-import com.example.snakeproject.object.Grass;
-import com.example.snakeproject.object.PartSnake;
-import com.example.snakeproject.object.Snake;
+import com.example.snakeproject.model.Apple;
+import com.example.snakeproject.model.Grass;
+import com.example.snakeproject.model.PartSnake;
+import com.example.snakeproject.model.Snake;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;

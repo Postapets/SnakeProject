@@ -16,4 +16,8 @@
     <color name="grey">#696969</color>
     <color name="dark">#1D000000</color>
     <color name="blue_rect">#B4D6E6</color>
+    <color name="cto_blue">#000000</color>
+    <color name="cto_yellow">#F0D542</color>
+    <color name="cto_grey">#AFAFAF</color>
+    <color name="cto_grey_text">#91919F</color>
 </resources>

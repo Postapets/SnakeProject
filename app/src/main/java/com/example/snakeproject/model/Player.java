@@ -1,4 +1,4 @@
-package com.example.snakeproject.object;
+package com.example.snakeproject.model;
 
 import android.graphics.Point;
 
